@@ -52,6 +52,7 @@ function revealSearchMatch(match){
     activeSearchTarget=match.element;
     document.querySelectorAll("#searchPanel [aria-current]").forEach(button=>button.removeAttribute("aria-current"));
     document.querySelectorAll(".search-result,.search-subitem").forEach(button=>{if(button._searchTarget===match.element)button.setAttribute("aria-current","location");});
+    if(window.innerWidth<=820)closeSearch();
     match.element.scrollIntoView({block:"start"});
     match.element.getAnimations().forEach(animation=>animation.cancel());
     match.element.animate([{backgroundColor:"#FEF9C3",outline:"2px solid #EAB308",outlineOffset:"3px"},{backgroundColor:"#FEF9C3",outline:"2px solid #EAB308",outlineOffset:"3px"}],{duration:1800});
